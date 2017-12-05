@@ -6,7 +6,6 @@ module.exports = {
 	entry : './src/app.js',
 	output: {
 		path: path.resolve(__dirname,"dist"),
-		//path: __dirname + '/dist',
 		filename: 'app.bundle.js'
 	},
 	module : {
@@ -21,7 +20,13 @@ module.exports = {
 			}
 		]
 	},
-	
+	devServer: {
+		contentBase: path.join(__dirname, "dist"),
+		compress: true,
+		port: 9000,
+		stats: "errors-only",
+		open: true
+	},
 	plugins: [
 		new HtmlWebpackPlugin({
 	    	title: 'Change Title to test webpack',
