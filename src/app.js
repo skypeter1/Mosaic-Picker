@@ -1,5 +1,9 @@
 const css = require('./app.scss');
 
-console.log('Hello from app.js did it again');
-console.log('This is the webpack server');
-console.log('I want to be succesfull and have a lot of money building products that change peoples lives for better');
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+ReactDOM.render(
+  <h1>Hello, world!</h1>,
+  document.getElementById('root')
+);
