@@ -4,8 +4,9 @@
   "description": "Webpack project starter",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server",
-    "prod": "webpack -p"
+    "dev-server": "webpack-dev-server",
+    "dev": "webpack -d --watch",
+    "prod": "rm -rf ./dist && webpack -p"
   },
   "author": "",
   "license": "ISC",
