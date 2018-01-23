@@ -1,5 +1,6 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var webpack = require("webpack");
 var path = require("path");
 
 module.exports = {
@@ -14,12 +15,14 @@ module.exports = {
 	module : {
 		rules: [
 			{
+				// test: /\.scss$/, 
+				// use: ExtractTextPlugin.extract({
+				// 	fallbackLoader: 'style-loader',
+				// 	loader: ['css-loader','sass-loader'],
+				// 	publicPath: '/dist'
+				// })
 				test: /\.scss$/, 
-				use: ExtractTextPlugin.extract({
-					fallbackLoader: 'style-loader',
-					loader: ['css-loader','sass-loader'],
-					publicPath: '/dist'
-				})
+				use: ['style-loader','css-loader','sass-loader']
 			},
 			{
 				test: /\.js$/,
@@ -37,18 +40,16 @@ module.exports = {
 		compress: true,
 		port: 9000,
 		stats: "errors-only",
-		open: true
+		open: true,
+		hot: true
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
 	    	title: 'Change Title to test webpack',
-	    	// minify: {
-	    	// 	collapseWhitespace: true
-	    	// },
 			hash: true,
 			excludeChunks: ['contact'],
 			filename: 'index.html',
-	    	template: './src/index.pug', // Load a custom template (lodash by default see the FAQ for details)
+	    	template: './src/index.pug',
 	  }),
 		  
 	  new HtmlWebpackPlugin({
@@ -64,8 +65,11 @@ module.exports = {
 
 		new ExtractTextPlugin({
 			filename: 'app.css',
-			disabled: false,
+			disabled: true,
 			allChunks: true
-		})
+		}),
+
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NamedModulesPlugin(),
 	]
 }
