@@ -34,7 +34,18 @@ module.exports = {
 			},
 			{
 				test: /\.pug$/,
-				use: ["html-loader", "pug-html-loader"]
+				use: [
+					"html-loader", 
+					"pug-html-loader"
+				]
+			},
+			{
+				test: /\.(jpe?g|png|gif|svg)$/i,
+				use: [
+					//"file-loader?name=images/[name].[ext]",
+					"file-loader?name=[name].[ext]&outputPath=images/&publicPath=./",
+					//"image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false"
+				]
 			},
 		]
 	},
@@ -52,7 +63,10 @@ module.exports = {
 			hash: true,
 			excludeChunks: ['contact'],
 			filename: 'index.html',
-	    	template: './src/index.pug',
+			template: './src/index.html',
+			/* Uncomment to use pug template
+			template: './src/index.pug',
+			*/
 	  }),
 		  
 	  new HtmlWebpackPlugin({
