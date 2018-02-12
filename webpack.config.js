@@ -2,6 +2,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var webpack = require("webpack");
 var path = require("path");
+//var bootstrapEntryPoints = require('./webpack.bootstrap.config.js');   
 
 var isProd = process.env.NODE_ENV === "production"; //true or false
 var cssDev = ['style-loader','css-loader','sass-loader'];
@@ -12,10 +13,13 @@ var cssProd =  ExtractTextPlugin.extract({
 })
 var cssConfig = isProd ? cssProd : cssDev;
 
+//var bootstrapConfig = isProd ? bootstrapEntryPoints.prod : bootstrapEntryPoints.dev;
+
 module.exports = {
 	entry : {
 		app: './src/app.js',
-		contact: './src/contact.js'
+		contact: './src/contact.js',
+//		bootstrap : bootstrapConfig
 	}, 
 	output: {
 		path: path.resolve(__dirname,"dist"),
@@ -47,6 +51,11 @@ module.exports = {
 					//"image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false"
 				]
 			},
+			{ test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000&name=fonts/[name].[ext]' },
+			{ test: /\.(ttf|eot)$/, loader: 'file-loader&name=fonts/[name].[ext]' },
+			  // Bootstrap 3
+			{ test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/, loader: 'imports-loader?jQuery=jquery' }
+
 		]
 	},
 	devServer: {
