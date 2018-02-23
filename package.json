@@ -39,5 +39,7 @@
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "prop-types": "^15.6.0"
+  }
 }

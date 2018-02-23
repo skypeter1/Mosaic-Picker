@@ -17,7 +17,7 @@ var cssConfig = isProd ? cssProd : cssDev;
 
 module.exports = {
 	entry : {
-		app: './src/app.js',
+		app: './src/index.js',
 		contact: './src/contact.js',
 //		bootstrap : bootstrapConfig
 	}, 
