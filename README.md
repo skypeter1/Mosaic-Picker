@@ -1,4 +1,4 @@
-## Webpack Mosaic Picker
+# Webpack Mosaic Picker
 
 This project uses webpack2 to build a nice looking mosaic picker
 
