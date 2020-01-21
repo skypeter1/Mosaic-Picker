@@ -6,7 +6,8 @@
   "scripts": {
     "dev-server": "webpack-dev-server",
     "dev": "webpack -d --watch",
-    "prod": "rm -rf ./dist && NODE_ENV=production webpack -p"
+    "prod": "rm -rf ./dist && NODE_ENV=production webpack -p",
+    "clean": "rm -rf node-modules/"
   },
   "author": "",
   "license": "ISC",
